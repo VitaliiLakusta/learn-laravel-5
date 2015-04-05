@@ -9,6 +9,7 @@
 
 				<div class="panel-body">
 					You are logged in!
+                    <h1>Welcome {{$user}}</h1>
 				</div>
 			</div>
 		</div>

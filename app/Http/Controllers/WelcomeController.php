@@ -1,5 +1,7 @@
 <?php namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Inspiring;
+
 class WelcomeController extends Controller {
 
 	/*
@@ -30,6 +32,7 @@ class WelcomeController extends Controller {
 	 */
 	public function index()
 	{
+        Inspiring::quote();
 		return view('welcome');
 	}
 

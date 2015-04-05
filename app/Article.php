@@ -10,6 +10,7 @@ class Article extends Model {
         'body',
         'published_at',
         'approved_date',
+        'user_id', // temporary
     ];
 
     protected $dates = ['published_at', 'approved_date'];
@@ -34,6 +35,11 @@ class Article extends Model {
     public function setApprovedAtAttribute($date)
     {
         $this->attributes['approved_date'] = Carbon::parse($date);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
     }
 
 }
