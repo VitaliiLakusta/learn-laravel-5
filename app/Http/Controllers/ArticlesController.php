@@ -6,8 +6,14 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticlesController extends Controller {
+
+    public function __construct()
+    {
+        $this->middleware('auth', ['only' => ['create', 'edit']]); // OR ['except' => 'controllermethod']
+    }
 
 	public function index()
     {
