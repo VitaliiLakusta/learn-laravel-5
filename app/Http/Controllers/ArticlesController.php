@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ArticlesController extends Controller {
 
@@ -33,9 +34,12 @@ class ArticlesController extends Controller {
 
     public function store(ArticleRequest $request)
     {
-        $article = new Article($request->all());
+        Auth::user()->articles()->create($request->all());
 
-        \Auth::user()->articles()->save($article);
+//        session()->flash('flash_message', 'Your article has been created!');
+//        session()->flash('flash_message_important', true);
+
+        flash()->overlay('Your article has been created!', 'Good Job');
 
         return redirect('articles');
     }
